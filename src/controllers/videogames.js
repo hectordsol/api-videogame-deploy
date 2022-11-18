@@ -46,12 +46,10 @@ const infoApi= async (name)=>{
             url= infoSearchApi.data.next//cada pagina tiene 20 registros
         }
     }
-    console.log("cantidad de registros",games.length);
     return games;//debería devolver hasta 20 si es consulta por name o 100 
 }
 
 const infoDb= async(name)=>{
-    console.log
     try{
         let title = '';
         let whereDB = {};
@@ -76,7 +74,6 @@ const infoDb= async(name)=>{
                source: "db",
            }   
        });
-       console.log("cantidad de registros DB",videoGames);
        return videoGames
     }catch (error){console.log(error)}
 }
@@ -85,6 +82,7 @@ const infoAll = async (name)=>{
     const api= await infoApi(name);
     const db= await infoDb(name);
     const infoTotal= [...api, ...db];
+    console.log(infoTotal.length);
     return infoTotal;
 }
 
