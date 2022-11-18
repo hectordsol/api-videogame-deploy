@@ -51,6 +51,7 @@ const infoApi= async (name)=>{
 }
 
 const infoDb= async(name)=>{
+    console.log
     try{
         let title = '';
         let whereDB = {};
@@ -75,7 +76,7 @@ const infoDb= async(name)=>{
                source: "db",
            }   
        });
-       console.log("cantidad de registros DB",videoGames.length)
+       console.log("cantidad de registros DB",videoGames);
        return videoGames
     }catch (error){console.log(error)}
 }
