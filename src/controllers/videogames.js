@@ -12,7 +12,6 @@ const infoApi= async (name)=>{
          url= `${URL_GAMES}?search=${name}&key=${API_KEY}`//traigo por name
          console.log(url);
          infoSearchApi = await axios.get(url);
-         console.log(infoSearchApi.data.results.length);
          infoSearchApi.data?.results.forEach((game)=>{
             games.push({
                 id: game.id,
@@ -82,7 +81,6 @@ const infoAll = async (name)=>{
     const api= await infoApi(name);
     const db= await infoDb(name);
     const infoTotal= [...api, ...db];
-    console.log(infoTotal.length);
     return infoTotal;
 }
 
