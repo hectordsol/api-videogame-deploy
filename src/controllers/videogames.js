@@ -46,7 +46,7 @@ const infoApi= async (name)=>{
             url= infoSearchApi.data.next//cada pagina tiene 20 registros
         }
     }
-    console.log("cantidad de registros",games.length)
+    console.log("cantidad de registros",games.length);
     return games;//debería devolver hasta 20 si es consulta por name o 100 
 }
 
@@ -74,7 +74,8 @@ const infoDb= async(name)=>{
                genres: game.Genres? game.Genres.map((genre)=>genre.name):[],
                source: "db",
            }   
-       }) 
+       });
+       console.log("cantidad de registros DB",videoGames.length)
        return videoGames
     }catch (error){console.log(error)}
 }
