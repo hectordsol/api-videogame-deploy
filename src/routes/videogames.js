@@ -7,13 +7,14 @@ const router = Router();
 router.get('/', async (req, res, next)=>{
     try {
         const {name} = req.query
-        let juegos= await infoAll(name);
-        if(name){
-            let juegosName= juegos.filter(e=>e.name.toLowerCase().includes(name.toLowerCase())).slice(0,15);
-            if(juegosName.length) res.send(juegosName)
-            else  res.status(404).send(`The Videogame ${name} does not exist`)
+        let videoGames= await infoAll(name);
+        if(!videoGames){
+            //let juegosName= juegos.filter(e=>e.name.toLowerCase().includes(name.toLowerCase())).slice(0,15);
+            //if(juegosName.length) res.send(juegosName)
+            //else
+              res.status(404).send(`The Videogame ${name} does not exist`)
         }else{
-            let todos= juegos.map(e=>{
+            let allGames= videoGames.map(e=>{
                 return{
                     id: e.id,
                     name: e.name,
@@ -24,7 +25,7 @@ router.get('/', async (req, res, next)=>{
                     source: e.source,
                 }
             })
-            res.send(todos)
+            res.send(allGames);
         }
     } catch (error) {
         next(error)
