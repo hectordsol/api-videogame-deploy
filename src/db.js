@@ -9,7 +9,9 @@ const {
 const db = new Sequelize(DATABASE_URL ||
   //`postgresql://postgres:R9QP0NLfu1I2XSq1w3e4@containers-us-west-66.railway.app:6000/railway`
   //`postgresql://postgres:FJt0TYunptrNcpEsaUnC@containers-us-west-128.railway.app:5774/railway`
-  `postgresql://hectordsol:hdswtv001!@host.tembo.io:5432/apivideogames`
+  //`postgresql://hectordsol:Ent8OiuXSM5aYQRR2dKyz3tvN6QOvLLE@dpg-d9hfd1cm0tmc73aoou4g-a.oregon-postgres.render.com/videogames_n3db`
+  `postgresql://hectordsol:Ent8OiuXSM5aYQRR2dKyz3tvN6QOvLLE@dpg-d9hfd1cm0tmc73aoou4g-a/videogames_n3db`
+//  postgresql://hectordsol:hdswtv001!@dpg-d9hfd1cm0tmc73aoou4g-a:5432/videogames_n3db
   //`postgres://kxwrmbyb:duiq43wGrOWmP5p2UvhZCcoZS_o8yvbF@rain.db.elephantsql.com/kxwrmbyb`
   
   , {
