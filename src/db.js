@@ -2,23 +2,22 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DATABASE_URL,
-} = process.env;
+const { DATABASE_URL } = process.env;
 
-const db = new Sequelize(DATABASE_URL ||
-  //`postgresql://postgres:R9QP0NLfu1I2XSq1w3e4@containers-us-west-66.railway.app:6000/railway`
-  `postgresql://postgres:FJt0TYunptrNcpEsaUnC@containers-us-west-128.railway.app:5774/railway`
-  //`postgresql://hectordsol:hdswtv001!@apigames:5774/apivideogames`
-  //`postgres://kxwrmbyb:duiq43wGrOWmP5p2UvhZCcoZS_o8yvbF@rain.db.elephantsql.com/kxwrmbyb`
-  
-  , {
+if (!DATABASE_URL) {
+  console.error('ERROR: La variable de entorno DATABASE_URL no esta definida.');
+  console.error('Crea una instancia PostgreSQL en Tembo Cloud (https://tembo.io) y copia la connection string.');
+  console.error('Luego asignala como DATABASE_URL en tu entorno o archivo .env');
+  process.exit(1);
+}
+
+const db = new Sequelize(DATABASE_URL, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialectOptions:{
-    ssl:{
-      require:true,
-      rejectUnauthorized:false
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
     }
   },
 });
